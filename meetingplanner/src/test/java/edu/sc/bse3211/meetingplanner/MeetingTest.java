@@ -207,7 +207,7 @@ public class MeetingTest {
     // Normal: Test adding an attendee to a meeting
     @Test
     public void testAddAttendee() {
-        Meeting meeting = new Meeting(4, 10, 10, 11, new ArrayList<>(), roomA, "Meeting");
+        Meeting meeting = new Meeting(4, 10, 10, 11, new ArrayList<Person>(), roomA, "Meeting");
         Person emp2 = new Person("Employee 2");
         meeting.addAttendee(emp2);
         assertEquals("Attendees list should have 1 person", 1, meeting.getAttendees().size());
