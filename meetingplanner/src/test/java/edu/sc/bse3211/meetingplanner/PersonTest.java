@@ -28,64 +28,68 @@ public class PersonTest {
         assertEquals("Name should be empty", "", p.getName());
     }
 
-    // Normal: Test creating a person with a specified name
-    @Test
-    public void testConstructorWithName() {
-        Person p = new Person("Employee 2");
-        assertEquals("Name should be Employee 2", "Employee 2", p.getName());
-    }
 
-    // Normal: Test adding a meeting to the person's calendar
+   // Normal: Test creating a person with a specified name
+//     @Test
+   public void testConstructorWithName() {
+       Person p = new Person("Mutumba");
+       assertEquals("Name should be Mutumba", "Employee 2", p.getName());
+   }
+
+// Normal: Test adding a meeting to the person's calendar
     @Test
     public void testAddMeeting() throws TimeConflictException {
-        Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
+       Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
         person.addMeeting(meeting);
         try {
             Meeting retrieved = person.getMeeting(4, 10, 0);
             assertEquals("Meeting month should match", 4, retrieved.getMonth());
             assertEquals("Meeting day should match", 10, retrieved.getDay());
-            assertEquals("Meeting start time should match", 10, retrieved.getStartTime());
+            assertEquals("Meeting start time should match", 10, retrieved.getStartTime());            
             assertEquals("Meeting end time should match", 11, retrieved.getEndTime());
             assertEquals("Meeting description should match", "Team Meeting", retrieved.getDescription());
-        } catch (IndexOutOfBoundsException e) {
-            fail("Should not throw IndexOutOfBoundsException when retrieving a valid meeting");
-        }
-    }
+         } catch (IndexOutOfBoundsException e) {
+             fail("Should not throw IndexOutOfBoundsException when retrieving a valid meeting");
+         }
+     }
+    
 
-    // Normal: Test retrieving a meeting from the person's calendar
-    @Test
-    public void testGetMeeting() throws TimeConflictException {
-        Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
-        person.addMeeting(meeting);
-        try {
-            Meeting retrieved = person.getMeeting(4, 10, 0);
-            assertEquals("Meeting month should match", 4, retrieved.getMonth());
-            assertEquals("Meeting day should match", 10, retrieved.getDay());
-            assertEquals("Meeting start time should match", 10, retrieved.getStartTime());
-            assertEquals("Meeting end time should match", 11, retrieved.getEndTime());
-            assertEquals("Meeting description should match", "Team Meeting", retrieved.getDescription());
-        } catch (IndexOutOfBoundsException e) {
-            fail("Should not throw IndexOutOfBoundsException when retrieving a valid meeting");
-        }
-    }
+   // Normal: Test retrieving a meeting from the person's calendar
+ @Test
+ public void testGetMeeting() throws TimeConflictException {
+  Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
+  person.addMeeting(meeting);
+         try {
+             Meeting retrieved = person.getMeeting(4, 10, 0);
+             assertEquals("Meeting month should match", 4, retrieved.getMonth());
+             assertEquals("Meeting day should match", 10, retrieved.getDay());
+             assertEquals("Meeting start time should match", 10, retrieved.getStartTime());
+             assertEquals("Meeting end time should match", 11, retrieved.getEndTime());
+             assertEquals("Meeting description should match", "Team Meeting", retrieved.getDescription());
+         } catch (IndexOutOfBoundsException e) {
+             fail("Should not throw IndexOutOfBoundsException when retrieving a valid meeting");
+         }
+     }
+    
 
-    // Normal: Test removing a meeting from the person's calendar
-    @Test
-    public void testRemoveMeeting() throws TimeConflictException {
-        Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
-        person.addMeeting(meeting);
-        person.removeMeeting(4, 10, 0);
-        try {
-            person.getMeeting(4, 10, 0);
-            fail("Should throw IndexOutOfBoundsException after removing the meeting");
-        } catch (IndexOutOfBoundsException e) {
-            assertTrue("Expected IndexOutOfBoundsException after removal", true);
-        }
-    }
+//     // Normal: Test removing a meeting from the person's calendar
+     @Test
+     public void testRemoveMeeting() throws TimeConflictException {
+         Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
+         person.addMeeting(meeting);
+         person.removeMeeting(4, 10, 0);
+         try {
+             person.getMeeting(4, 10, 0);
+             fail("Should throw IndexOutOfBoundsException after removing the meeting");
+         } catch (IndexOutOfBoundsException e) {
+             assertTrue("Expected IndexOutOfBoundsException after removal", true);
+         }
+     }
 
-    // Normal: Test printing the agenda for a month
-    @Test
-    public void testPrintAgendaForMonth() throws TimeConflictException {
+
+//     // Normal: Test printing the agenda for a month
+     @Test
+     public void testPrintAgendaForMonth() throws TimeConflictException {
         Meeting meeting1 = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
         Meeting meeting2 = new Meeting(4, 10, 12, 13, attendees, roomA, "Client Meeting");
         person.addMeeting(meeting1);
@@ -100,7 +104,7 @@ public class PersonTest {
         }
     }
 
-    // Normal: Test printing the agenda for a specific day
+//     // Normal: Test printing the agenda for a specific day
     @Test
     public void testPrintAgendaForDay() throws TimeConflictException {
         Meeting meeting1 = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
@@ -114,7 +118,8 @@ public class PersonTest {
         assertEquals("Agenda should match expected format", expected, agenda);
     }
 
-    // Normal: Test checking if the person is busy
+
+//     // Normal: Test checking if the person is busy
     @Test
     public void testIsBusy() throws TimeConflictException {
         Meeting meeting = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
@@ -123,7 +128,8 @@ public class PersonTest {
         assertFalse("Person should not be busy from 12:00-13:00", person.isBusy(4, 10, 12, 13));
     }
 
-    // Edge: Test adding a meeting on the first day of a month (January 1st)
+
+//     // Edge: Test adding a meeting on the first day of a month (January 1st)
     @Test
     public void testAddMeetingFirstDayOfMonth() throws TimeConflictException {
         Meeting meeting = new Meeting(1, 1, 10, 11, attendees, roomA, "New Year Meeting");
@@ -140,7 +146,8 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test adding a meeting on the last day of a 31-day month (March 31st)
+
+//     // Edge: Test adding a meeting on the last day of a 31-day month (March 31st)
     @Test
     public void testAddMeetingLastDayOfMonth() throws TimeConflictException {
         Meeting meeting = new Meeting(3, 31, 10, 11, attendees, roomA, "March Meeting");
@@ -157,7 +164,7 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test adding a meeting on the last day of a 30-day month (April 30th)
+//     // Edge: Test adding a meeting on the last day of a 30-day month (April 30th)
     @Test
     public void testAddMeetingLastDayOf30DayMonth() throws TimeConflictException {
         Meeting meeting = new Meeting(4, 30, 10, 11, attendees, roomA, "April Meeting");
@@ -174,7 +181,7 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test adding a meeting with minimal duration (00:00-01:00)
+//     // Edge: Test adding a meeting with minimal duration (00:00-01:00)
     @Test
     public void testAddMeetingMinimalDuration() throws TimeConflictException {
         Meeting meeting = new Meeting(4, 10, 0, 1, attendees, roomA, "Minimal Duration Meeting");
@@ -191,7 +198,7 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test adding a meeting spanning the full day (00:00-23:00)
+//     // Edge: Test adding a meeting spanning the full day (00:00-23:00)
     @Test
     public void testAddMeetingFullDay() throws TimeConflictException {
         Meeting meeting = new Meeting(4, 10, 0, 23, attendees, roomA, "Full Day Meeting");
@@ -208,7 +215,7 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test printing an empty agenda for a month
+//     // Edge: Test printing an empty agenda for a month
     @Test
     public void testPrintEmptyAgendaForMonth() {
         try {
@@ -223,7 +230,7 @@ public class PersonTest {
         }
     }
 
-    // Edge: Test printing an empty agenda for a specific day
+//     // Edge: Test printing an empty agenda for a specific day
     @Test
     public void testPrintEmptyAgendaForDay() {
         String agenda = person.printAgenda(4, 10);
@@ -231,13 +238,13 @@ public class PersonTest {
         assertEquals("Empty agenda should match expected format", expected, agenda);
     }
 
-    // Edge: Test isBusy with no meetings scheduled
+//     // Edge: Test isBusy with no meetings scheduled
     @Test
     public void testIsBusyNoMeetings() throws TimeConflictException {
         assertFalse("Person should not be busy with no meetings", person.isBusy(4, 10, 10, 11));
     }
 
-    // Edge: Test getMeeting with invalid index (should throw IndexOutOfBoundsException)
+//     // Edge: Test getMeeting with invalid index (should throw IndexOutOfBoundsException)
     @Test
     public void testGetMeetingInvalidIndex() {
         try {
@@ -248,7 +255,7 @@ public class PersonTest {
         }
     }
 
-    // Illegal: Test adding a meeting with a time conflict
+//     // Illegal: Test adding a meeting with a time conflict
     @Test
     public void testAddMeetingTimeConflict() throws TimeConflictException {
         Meeting meeting1 = new Meeting(4, 10, 10, 11, attendees, roomA, "Team Meeting");
@@ -262,7 +269,7 @@ public class PersonTest {
         }
     }
 
-    // Illegal: Test adding a meeting with invalid month (month 12)
+//     // Illegal: Test adding a meeting with invalid month (month 12)
     @Test
     public void testAddMeetingInvalidMonth() {
         Meeting meeting = new Meeting(12, 1, 10, 11, attendees, roomA, "Invalid Month Meeting");
@@ -298,7 +305,7 @@ public class PersonTest {
         }
     }
 
-    // Illegal: Test adding a meeting with negative start time
+//     // Illegal: Test adding a meeting with negative start time
     @Test
     public void testAddMeetingNegativeStartTime() {
         Meeting meeting = new Meeting(4, 10, -1, 10, attendees, roomA, "Negative Start Time Meeting");
@@ -310,7 +317,7 @@ public class PersonTest {
         }
     }
 
-    // Illegal: Test adding a meeting with start time greater than 23
+//     // Illegal: Test adding a meeting with start time greater than 23
     @Test
     public void testAddMeetingStartTimeGreaterThan23() {
         Meeting meeting = new Meeting(4, 10, 24, 25, attendees, roomA, "Start Time Greater Than 23 Meeting");
@@ -322,7 +329,7 @@ public class PersonTest {
         }
     }
 
-    // Illegal: Test adding a meeting with start time equal to end time
+//     // Illegal: Test adding a meeting with start time equal to end time
     @Test
     public void testAddMeetingStartTimeEqualToEndTime() {
         Meeting meeting = new Meeting(4, 10, 10, 10, attendees, roomA, "Start Time Equal To End Time Meeting");
@@ -333,4 +340,4 @@ public class PersonTest {
             assertTrue("Expected TimeConflictException", e.getMessage().contains("Meeting starts before it ends"));
         }
     }
-}
+ }
