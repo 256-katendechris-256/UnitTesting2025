@@ -240,7 +240,7 @@ The following tests verify the functionality of the Person class in the meeting 
 
 2. testConstructorWithName (Normal)
    - Purpose: Test creating a person with a specified name.
-   - Expected Outcome: Name should match the provided value ("Employee 2").
+   - Expected Outcome: Name should match the provided value ("Mutumba").
 
 3. testAddMeeting (Normal)
    - Purpose: Test adding a meeting to the person's calendar.
