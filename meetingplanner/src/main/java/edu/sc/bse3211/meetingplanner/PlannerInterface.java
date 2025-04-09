@@ -124,7 +124,7 @@ public class PlannerInterface {
 		}
 
 		//Read in room ID
-		Room where = new Room();
+		Room where = new Room("R101", "Conference Room");
 		boolean selected=false;
 		while(!selected){
 			try{
@@ -276,7 +276,7 @@ public class PlannerInterface {
 			if(sMonth!=eMonth){
 				// Start month
 				for(int day=sDay; day<=31;day++){
-					Meeting meeting = new Meeting(sMonth,day,0,23,attendees,new Room(),"vacation");
+					Meeting meeting = new Meeting(sMonth,day,0,23,attendees,new Room("R101", "Conference Room"),"vacation");
 					try{
 						who.addMeeting(meeting);
 					}catch(TimeConflictException e){
@@ -287,7 +287,7 @@ public class PlannerInterface {
 				// Any intervening months
 				for(int month=sMonth+1; month<eMonth;month++){
 					for(int day=1; day<=31;day++){
-						Meeting meeting = new Meeting(month,day,0,23,attendees,new Room(),"vacation");
+						Meeting meeting = new Meeting(month,day,0,23,attendees,new Room("R101", "Conference Room"),"vacation");
 						try{
 							who.addMeeting(meeting);
 						}catch(TimeConflictException e){
@@ -298,7 +298,7 @@ public class PlannerInterface {
 				}
 				// End month
 				for(int day=1;day<=eDay;day++){
-					Meeting meeting = new Meeting(eMonth,day,0,23,attendees,new Room(),"vacation");
+					Meeting meeting = new Meeting(eMonth,day,0,23,attendees,new Room("R101", "Conference Room"),"vacation");
 					try{
 						who.addMeeting(meeting);
 					}catch(TimeConflictException e){
@@ -308,7 +308,7 @@ public class PlannerInterface {
 				}
 			}else{
 				for(int day=sDay; day<=eDay;day++){
-					Meeting meeting = new Meeting(sMonth,day,0,23,attendees,new Room(),"vacation");
+					Meeting meeting = new Meeting(sMonth,day,0,23,attendees,new Room("R101", "Conference Room"),"vacation");
 					try{
 						who.addMeeting(meeting);
 					}catch(TimeConflictException e){

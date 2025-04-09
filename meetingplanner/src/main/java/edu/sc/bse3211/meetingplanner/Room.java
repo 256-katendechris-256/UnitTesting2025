@@ -7,7 +7,7 @@ public class Room {
 	/**
 	 * Default constructor
 	 */
-	public Room(){
+	public Room(String r101, String conference_Room){
 		ID="";
 		calendar=  new Calendar();
 	}
